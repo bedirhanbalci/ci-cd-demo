@@ -1,4 +1,4 @@
-name: CI/CD ACTIONS
+name: CI/CD Actions
 
 on:
   push:
@@ -24,7 +24,7 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
-      - name: Cache
+      - name: Cache local Maven repository
         uses: actions/cache@v3
         with:
           path: ~/.m2/repository
@@ -35,7 +35,7 @@ jobs:
         run: mvn -B test
 
   docker:
-    name: Build and Deploy Docker Hub
+    name: Build and Deploy Spring Boot App
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -71,4 +71,4 @@ jobs:
           context: .
           dockerfile: Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/githubActions:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/githubactions:latest
