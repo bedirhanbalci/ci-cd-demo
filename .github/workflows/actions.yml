@@ -72,5 +72,3 @@ jobs:
           dockerfile: Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/githubActions:latest
-
-
